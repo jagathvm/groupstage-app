@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GroupStage - Tournament Dashboard</title>
+        <link
+            rel="icon"
+            href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>🏆 GroupStage</h1>
+
+            <div class="card">
+                <div class="grid-inputs">
+                    <div>
+                        <label for="players"
+                            >Players List (16 Names - One Per Line)</label
+                        >
+                        <textarea
+                            id="players"
+                            placeholder="Enter 16 player names..."
+                        ></textarea>
+                    </div>
+                    <div>
+                        <label for="countries"
+                            >Countries List (16 Nations - One Per Line)</label
+                        >
+                        <textarea
+                            id="countries"
+                            placeholder="Enter 16 country names..."
+                        ></textarea>
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <button class="btn-save" onclick="saveAndVerify()">
+                        1. Save & Verify Data
+                    </button>
+                    <button
+                        class="btn-generate"
+                        id="generateBtn"
+                        onclick="generateTournament()"
+                        disabled
+                    >
+                        2. Generate Groups
+                    </button>
+                </div>
+            </div>
+
+            <div class="card verification-zone" id="verifyZone">
+                <h3 style="margin-top: 0; color: var(--secondary)">
+                    🔍 Verification Dashboard
+                </h3>
+                <p
+                    style="
+                        font-size: 0.9rem;
+                        color: var(--text-muted);
+                        margin-bottom: 15px;
+                    "
+                >
+                    Please confirm that all 16 competitors and 16 teams match
+                    perfectly before triggering the draw layout.
+                </p>
+                <div class="verify-lists">
+                    <div>
+                        <h4 style="margin: 0 0 10px 0; font-size: 0.9rem">
+                            Registered Players (<span id="countPlayers">0</span
+                            >/16)
+                        </h4>
+                        <div class="verify-column">
+                            <ul class="badge-list" id="verifyPlayersList"></ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin: 0 0 10px 0; font-size: 0.9rem">
+                            Selected Countries (<span id="countCountries"
+                                >0</span
+                            >/16)
+                        </h4>
+                        <div class="verify-column">
+                            <ul
+                                class="badge-list"
+                                id="verifyCountriesList"
+                            ></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="groupsDisplay" class="groups-grid"></div>
+
+            <div
+                id="shareContainer"
+                style="display: none; text-align: center; margin-bottom: 20px"
+            >
+                <button
+                    class="btn-save"
+                    style="
+                        max-width: 300px;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 8px;
+                    "
+                    onclick="shareGroups()"
+                >
+                    🔗 Share Group Details
+                </button>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
